@@ -1,11 +1,9 @@
 import React, {useContext, useEffect} from "react";
 import {CompanyDetailsContext} from "../context/CompanyDetailsContext";
 import {PersonalSpaceContext} from "../context/PersonalSpace";
-
-// import PersonalSpacePage from "../personal_spase/PersonalSpacePage";
 import Balance from "./components/Balance";
 import Categories from "./components/categories/Categories";
-
+import PersonalSpacePage from "./components/personal_space/PersonalSpacePage";
 import MonthBar from "./components/side_bar/MonthBar";
 import NavBarAndTools from "./components/top_bar/NavBarAndTools";
 
@@ -28,7 +26,7 @@ export default function MonthOverviewPage() {
       <div className=" h-24 w-ful col-start-1 col-end-9"></div>
       {/* Space Holder */}
 
-      {/* {personalSpaceContext ? <PersonalSpacePage /> : ""} */}
+      {personalSpaceContext ? <PersonalSpacePage /> : ""}
       {/* {billDetailsOn ? <Billdetailspage /> : ""} */}
     </div>
   );

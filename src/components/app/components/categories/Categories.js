@@ -1,57 +1,19 @@
 import React, {useContext, useEffect, useState} from "react";
 import Category from "./Category";
-import {
-  MdOutlineDirectionsBusFilled,
-  MdOutlineFastfood,
-  MdOutlineHelpOutline,
-  MdOutlineShoppingCart,
-  MdOutlineSwapHoriz,
-  MdOutlineCloud,
-  MdOutlineStickyNote2,
-  MdOutlineShoppingBag,
-  MdOutlineTableView,
-  MdDisabledByDefault,
-  MdExploreOff,
-  MdShoppingBag,
-  MdSwapHorizontalCircle,
-  MdShoppingCart,
-  MdHelp,
-  MdLunchDining,
-  MdRestaurant,
-  MdStoreMallDirectory,
-  MdTraffic,
-  MdWbCloudy,
-  MdVolunteerActivism,
-  MdLocalMall,
-  MdTableView,
-  MdHomeFilled,
-} from "react-icons/md";
-import {
-  FiChevronsLeft,
-  FiCloud,
-  FiCoffee,
-  FiCompass,
-  FiFileMinus,
-  FiShoppingBag,
-  FiShoppingCart,
-} from "react-icons/fi";
+import {RiRestaurantLine} from "react-icons/ri";
+import {getMonth} from "../../../data_management/pullData";
+import {PullDataContext} from "../../../context/PullDataContext";
 import {
   BiBasket,
-  BiBookmarkAlt,
   BiCartAlt,
   BiDonateHeart,
   BiHomeSmile,
   BiRadar,
   BiReceipt,
-  BiRestaurant,
-  BiStore,
   BiTachometer,
   BiTransferAlt,
   BiTrip,
 } from "react-icons/bi";
-import {RiRestaurantLine} from "react-icons/ri";
-import {getMonth} from "../../../data_management/pullData";
-import {PullDataContext} from "../../../context/PullDataContext";
 
 export default function Categories() {
   const [data, setData] = useState([]);
@@ -62,16 +24,6 @@ export default function Categories() {
     [sheetName, setSheetName],
     [sheetId, setSheetId],
   ] = useContext(PullDataContext);
-
-  const getDataFromGoogle = async () => {
-    const response = await getMonth(
-      localStorage.getItem("sheet_id"),
-      localStorage.getItem("sheet_name"),
-      month,
-      year
-    );
-    setData(response.data);
-  };
 
   useEffect(() => {
     const getDataFromGoogle = async () => {
@@ -91,7 +43,7 @@ export default function Categories() {
       <Category
         name={"לא זוהה"}
         categories={data}
-        icon={<BiRadar color="#B22222" size={"40"} />}
+        icon={<BiRadar color="#F45B69" size={"40"} />}
       />
       <Category
         name={"העברות ומשיכות באשראי"}

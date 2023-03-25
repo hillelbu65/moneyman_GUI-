@@ -3,8 +3,10 @@ import React, {createContext, useState} from "react";
 export const PullDataContext = createContext();
 
 export const PullDataProvider = (props) => {
-  const [month, setMonth] = useState("01");
-  const [year, setYear] = useState("2023");
+  const [month, setMonth] = useState(
+    "0" + (new Date().getMonth() + 1).toString()
+  );
+  const [year, setYear] = useState(new Date().getFullYear().toString());
   const [sheetName, setSheetName] = useState(
     localStorage.getItem("sheet_name")
   );
