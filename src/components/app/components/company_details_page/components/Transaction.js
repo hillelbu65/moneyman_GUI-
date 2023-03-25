@@ -1,4 +1,5 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
+import {BiShekel} from "react-icons/bi";
 
 export default function Transaction(props) {
   const [borderStyle, setBorderStyle] = useState("");
@@ -23,7 +24,7 @@ export default function Transaction(props) {
       );
     } else if (props.data.amount.toString()[0] !== "-") {
       setBorderStyle(
-        "w-full h-fit rounded-lg p-0.5 bg-gradient-to-l from-my_pink via-my_green to-my_soft_black"
+        "w-full h-fit rounded-lg p-0.5 bg-gradient-to-l from-my_pink via-my_green to-my_green"
       );
       setDayStyle(
         "flex min-h-8 bg-my_pink rounded-md items-center justify-center font-bold text-my_soft_cream"
@@ -44,7 +45,10 @@ export default function Transaction(props) {
           </div>
         </div>
         <div className="flex flex-row items-center text-my_soft_black font-semibold">
-          <span className="mt-1"></span> {amount()}{" "}
+          <span className="mt-1">
+            <BiShekel />
+          </span>{" "}
+          {amount()}
         </div>
         <div className={dayStyle} style={{minWidth: "32px", minHeight: "32px"}}>
           {day}

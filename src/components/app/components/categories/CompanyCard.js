@@ -1,6 +1,6 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React, {useContext} from "react";
 import {CompanyDetailsContext} from "../../../context/CompanyDetailsContext";
+import {BiShekel} from "react-icons/bi";
 
 export default function CompanyCard(props) {
   const [
@@ -39,7 +39,9 @@ export default function CompanyCard(props) {
         </div>
         <div className="flex flex-row col-start-4 col-end-4 items-center justify-start font-bold m-2 gap-1 text-lg">
           <div>{sum}</div>
-          {/* <div className="-mr-1 mt-1">{currencyContext.icon}</div> */}
+          <div className="-mr-1 mt-1">
+            <BiShekel />
+          </div>
         </div>
       </div>
     </div>
