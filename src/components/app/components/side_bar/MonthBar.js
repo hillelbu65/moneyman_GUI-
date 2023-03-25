@@ -1,10 +1,16 @@
 import React, {useContext, useState} from "react";
+import {PullDataContext} from "../../../context/PullDataContext";
 // import {MonthContext} from "../../../context/monthContext";
 
 export default function MonthBar() {
-  //Month context.
-  // const [monthContext, setMonthContext] = useContext(MonthContext);
-  const [Clicked, setClicked] = useState(localStorage.getItem("month"));
+  const [
+    [month, setMonth],
+    [year, setYear],
+    [sheetName, setSheetName],
+    [sheetId, setSheetId],
+  ] = useContext(PullDataContext);
+
+  const [Clicked, setClicked] = useState(month);
   const months = [
     "01ינו",
     "02פבו",
@@ -25,8 +31,8 @@ export default function MonthBar() {
       <div className="flex">
         <div
           onClick={() => {
-            sessionStorage.setItem("month", el[0] + el[1]);
             setClicked(el[0] + el[1]);
+            setMonth(el[0] + el[1]);
           }}
           className={`${
             Clicked === el[0] + el[1]

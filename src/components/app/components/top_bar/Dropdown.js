@@ -1,20 +1,27 @@
 import React, {useContext, useEffect, useState} from "react";
+import {PullDataContext} from "../../../context/PullDataContext";
 import {getMonth} from "../../../data_management/pullData";
 
 export default function Dropdown(props) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [touch, setTouch] = useState(false);
   const [dropdownValue, setDropdownValue] = useState(
     new Date().getFullYear().toString()
   );
   const [data, setData] = useState([]);
 
+  const [
+    [month, setMonth],
+    [year, setYear],
+    [sheetName, setSheetName],
+    [sheetId, setSheetId],
+  ] = useContext(PullDataContext);
+
   const getDataFromGoogle = async () => {
     const response = await getMonth(
       localStorage.getItem("sheet_id"),
       localStorage.getItem("sheet_name"),
-      localStorage.getItem("month"),
-      localStorage.getItem("year")
+      month,
+      year
     );
     setData(response.range);
     console.log(response.range);
@@ -24,23 +31,13 @@ export default function Dropdown(props) {
     getDataFromGoogle();
   }, []);
 
-  useEffect(() => {
-    const closeDropdown = (e) => {
-      if (e.path[0].id !== "dropDown") {
-        setDropdownOpen(false);
-      }
-    };
-    document.body.addEventListener("click", closeDropdown);
-    return () => document.body.removeEventListener("click", closeDropdown);
-  });
-
   const selections = data.map((year) => {
-    if (year != dropdownValue) {
+    if (year !== dropdownValue) {
       return (
         <div
           onClick={() => {
             setDropdownValue(year);
-            localStorage.setItem("year", year);
+            setYear(year);
             setDropdownOpen(false);
           }}
           className={`

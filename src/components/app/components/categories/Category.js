@@ -27,14 +27,6 @@ export default function Category(props) {
     (category, index) => category.category === props.name
   );
 
-  const sum = () => {
-    if (theCategory.length <= 0) {
-      return 0;
-    } else {
-      return theCategory[0].sum.toString().slice(1);
-    }
-  };
-
   const conditione = (category) => {
     if (category.length <= 0) {
       return (

@@ -1,24 +1,31 @@
 import React, {useContext, useEffect, useState} from "react";
+import {PullDataContext} from "../../context/PullDataContext";
 import {calculateTheSumOfTheMonth} from "../../data_management/CalculationUtils";
 import {getMonth} from "../../data_management/pullData";
 
 export default function Balance() {
   const [sumData, setSumData] = useState("");
 
-  const getMonthData = async () => {
-    const data = await getMonth(
-      localStorage.getItem("sheet_id"),
-      localStorage.getItem("sheet_name"),
-      localStorage.getItem("month"),
-      localStorage.getItem("year")
-    );
-    setSumData(calculateTheSumOfTheMonth(data.data));
-    console.log(calculateTheSumOfTheMonth(data.data));
-  };
+  const [
+    [month, setMonth],
+    [year, setYear],
+    [sheetName, setSheetName],
+    [sheetId, setSheetId],
+  ] = useContext(PullDataContext);
 
   useEffect(() => {
+    const getMonthData = async () => {
+      const data = await getMonth(
+        localStorage.getItem("sheet_id"),
+        localStorage.getItem("sheet_name"),
+        month,
+        year
+      );
+      setSumData(calculateTheSumOfTheMonth(data.data));
+      console.log(calculateTheSumOfTheMonth(data.data));
+    };
     getMonthData();
-  }, []);
+  }, [month, year]);
 
   return (
     <div className=" h-fit w-full col-start-2 col-end-8 mt-40 grid grid-cols-8">

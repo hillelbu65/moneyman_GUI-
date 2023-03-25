@@ -1,5 +1,4 @@
 import React, {useContext, useEffect, useState} from "react";
-import {getMonth} from "../../../data_management/pullData";
 import Category from "./Category";
 import {
   MdOutlineDirectionsBusFilled,
@@ -51,26 +50,41 @@ import {
   BiTrip,
 } from "react-icons/bi";
 import {RiRestaurantLine} from "react-icons/ri";
-// import {RefreshContext} from "../../../context/RefreshPageContext";
+import {getMonth} from "../../../data_management/pullData";
+import {PullDataContext} from "../../../context/PullDataContext";
 
 export default function Categories() {
   const [data, setData] = useState([]);
 
-  // const [refresh, setRefresh] = useContext(RefreshContext);
+  const [
+    [month, setMonth],
+    [year, setYear],
+    [sheetName, setSheetName],
+    [sheetId, setSheetId],
+  ] = useContext(PullDataContext);
 
   const getDataFromGoogle = async () => {
     const response = await getMonth(
       localStorage.getItem("sheet_id"),
       localStorage.getItem("sheet_name"),
-      localStorage.getItem("month"),
-      localStorage.getItem("year")
+      month,
+      year
     );
     setData(response.data);
   };
 
   useEffect(() => {
+    const getDataFromGoogle = async () => {
+      const response = await getMonth(
+        localStorage.getItem("sheet_id"),
+        localStorage.getItem("sheet_name"),
+        month,
+        year
+      );
+      setData(response.data);
+    };
     getDataFromGoogle();
-  }, []);
+  }, [month, year]);
 
   return (
     <div className="w-full flex flex-col sm:col-start-2 sm:col-end-8 gap-1">

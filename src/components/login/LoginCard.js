@@ -5,9 +5,6 @@ import Input from "../utils_components/Input";
 import {RiGoogleFill} from "react-icons/ri";
 import {PullDataContext} from "../context/PullDataContext";
 
-const name = localStorage.getItem("sheet_name");
-const id = localStorage.getItem("sheet_id");
-
 export default function LoginCard() {
   const [borderStyle, setBorderStyle] = useState("");
 
@@ -37,7 +34,7 @@ export default function LoginCard() {
         "bg-my_green flex w-full h-full justify-center items-center p-3"
       );
     }
-  });
+  }, [sheetName, sheetId]);
 
   return (
     <div className={borderStyle}>
