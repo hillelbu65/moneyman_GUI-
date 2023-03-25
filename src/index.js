@@ -8,21 +8,24 @@ import {BrowserRouter} from "react-router-dom";
 import {PersonalSpaceProvider} from "./components/context/PersonalSpace";
 import {CompanyDetailsProvider} from "./components/context/CompanyDetailsContext";
 import {PullDataProvider} from "./components/context/PullDataContext";
+import {PromptProvider} from "./components/context/PromptContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const CLIENT_ID = process.env.REACT_APP_GCP_CLIENT_ID;
 root.render(
-  <PullDataProvider>
-    <CompanyDetailsProvider>
-      <PersonalSpaceProvider>
-        <BrowserRouter>
-          <GoogleOAuthProvider clientId={CLIENT_ID}>
-            <App />
-          </GoogleOAuthProvider>
-        </BrowserRouter>
-      </PersonalSpaceProvider>
-    </CompanyDetailsProvider>
-  </PullDataProvider>
+  <PromptProvider>
+    <PullDataProvider>
+      <CompanyDetailsProvider>
+        <PersonalSpaceProvider>
+          <BrowserRouter>
+            <GoogleOAuthProvider clientId={CLIENT_ID}>
+              <App />
+            </GoogleOAuthProvider>
+          </BrowserRouter>
+        </PersonalSpaceProvider>
+      </CompanyDetailsProvider>
+    </PullDataProvider>
+  </PromptProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

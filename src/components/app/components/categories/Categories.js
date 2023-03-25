@@ -14,9 +14,12 @@ import {
   BiTransferAlt,
   BiTrip,
 } from "react-icons/bi";
+import {PromptContext} from "../../../context/PromptContext";
 
 export default function Categories() {
   const [data, setData] = useState([]);
+
+  const [prompt, setPrompt] = useContext(PromptContext);
 
   const [
     [month, setMonth],
@@ -35,7 +38,14 @@ export default function Categories() {
       );
       setData(response.data);
     };
-    getDataFromGoogle();
+    getDataFromGoogle().catch(() =>
+      setPrompt({
+        type: "error",
+        text: "אנחנו לא מצליחים לשלוף את המידע שלך, זה נראה כאילו חסרים לך פרטים באיזור האישי  או שהם שגואים",
+        state: true,
+        time: 12000,
+      })
+    );
   }, [month, year]);
 
   return (
