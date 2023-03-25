@@ -22,7 +22,7 @@ export default function NavBarAndTools(props) {
           <BiCog size={"25px"} />
         </div>
       </div>
-      {/* <LogoutButton /> */}
+      <LogoutButton />
     </div>
   );
 }

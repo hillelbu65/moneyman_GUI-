@@ -1,14 +1,13 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, {useContext} from "react";
 import {CompanyDetailsContext} from "../../../context/CompanyDetailsContext";
-// import {CurrencyContext} from "../../../context/CurrencyContext";
 
 export default function CompanyCard(props) {
-  // const [[currencyContext, setCurrencyContext], [itsUpdate, setItsUpdate]] =
-  //   useContext(CurrencyContext);
-  // const [[billDetailsOn, setBillDetailsOn], [company, setCompany]] = useContext(
-  //   CompanyDetailsContext
-  // );
+  const [
+    [companyDetailsOn, setCompanyDetailsOn],
+    [company, setCompany],
+    [companyYearData, setCompanyYearData],
+  ] = useContext(CompanyDetailsContext);
 
   const sum = props.data.sum.toString().slice(1);
 
@@ -17,10 +16,9 @@ export default function CompanyCard(props) {
       <div
         className=" grid grid-cols-4 w-72 max-h-20 min-h-20 p-2 justify-center items-center rounded-lg text-my_soft_black border-my_soft_black border-2 ml-4 mr-4 group-hover:bg-opacity-80 font-medium shadow-lg"
         onClick={() => {
-          // setBillDetailsOn(true);
-          // setCompany(props.data);
-          // companySum();
-          console.log("clicked");
+          setCompanyDetailsOn(true);
+          setCompany(props.data.transactions[0].companyName);
+          console.log(props.data.transactions[0].companyName);
         }}
       >
         <div className=" col-start-1 col-end-1 flex flex-row justify-end">

@@ -80,12 +80,10 @@ export default function Category(props) {
   });
 
   useEffect(() => {
-    console.log(contentWrapper.current.scrollLeft);
     let maxScrollLeft =
       contentWrapper.current.scrollWidth -
       (contentWrapper.current.clientWidth + 100);
     let max = maxScrollLeft * -1;
-    console.log(max);
     if (scrollingLeft > max) {
       setVisL(true);
     } else if (scrollingLeft < max) {

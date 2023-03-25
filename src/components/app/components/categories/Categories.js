@@ -41,7 +41,7 @@ export default function Categories() {
     getDataFromGoogle().catch(() =>
       setPrompt({
         type: "error",
-        text: "אנחנו לא מצליחים לשלוף את המידע שלך, זה נראה כאילו חסרים לך פרטים באיזור האישי  או שהם שגואים",
+        text: "אנחנו לא מצליחים  למשוך את המידע שלך וודאי שכל הפרטים שלך נכונים והתחברי מחדש עם גוגל",
         state: true,
         time: 12000,
       })
