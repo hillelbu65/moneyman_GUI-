@@ -1,7 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import CompanyCard from "./CompanyCard";
 import Svg from "./animation/Svg";
 import {BiChevronLeft, BiChevronRight} from "react-icons/bi";
+import LoadingCategory from "../chart/animations/LoadingCategory";
+import LoadingCompanyCard from "./animation/LoadingCompanyCard";
+import {PullDataContext} from "../../../context/PullDataContext";
+import {PromptContext} from "../../../context/PromptContext";
 
 const sideScroll = (element, speed, distance, step) => {
   let scrollAmount = 0;
@@ -15,6 +19,17 @@ const sideScroll = (element, speed, distance, step) => {
 };
 
 export default function Category(props) {
+  const [temp, setTemp] = useState(false);
+  const [theCategory, setTheCategory] = useState([
+    {
+      companies: [
+        {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+        {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+        {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+        {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+      ],
+    },
+  ]);
   const [scrollingLeft, setScrollingLeft] = useState(0);
   const [visR, setVisR] = useState(false);
   const [visL, setVisL] = useState(true);
@@ -23,9 +38,44 @@ export default function Category(props) {
   const [scrollingL, setScrollingL] = useState(false);
   const contentWrapper = React.useRef(null);
   const [style, setStyle] = useState("");
-  const theCategory = props.categories.filter(
+
+  const [
+    [month, setMonth],
+    [year, setYear],
+    [sheetName, setSheetName],
+    [sheetId, setSheetId],
+  ] = useContext(PullDataContext);
+
+  const [prompt, setPrompt] = useContext(PromptContext);
+
+  const category = props.categories.filter(
     (category, index) => category.category === props.name
   );
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTemp(!temp);
+    }, 1000);
+  }, [year, month]);
+
+  useEffect(() => {
+    setTheCategory([
+      {
+        companies: [
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+        ],
+      },
+    ]);
+
+    if (!prompt.state && prompt.type !== "error") {
+      setTimeout(() => {
+        setTheCategory(category);
+      }, 1000);
+    }
+  }, [temp]);
 
   const conditione = (category) => {
     if (category.length <= 0) {
@@ -36,7 +86,11 @@ export default function Category(props) {
       );
     } else if (category.length >= 1) {
       const companies = category[0].companies.map((company, index) => {
-        return <CompanyCard key={index} data={company} />;
+        if (company.sum === 0) {
+          return <LoadingCompanyCard />;
+        } else {
+          return <CompanyCard key={index} data={company} />;
+        }
       });
       return companies;
     }

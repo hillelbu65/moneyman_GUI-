@@ -1,10 +1,24 @@
 import React, {useContext, useEffect, useState} from "react";
 import {PullDataContext} from "../../../context/PullDataContext";
 import {getMonth} from "../../../data_management/pullData";
+import LoadingCategory from "./animations/LoadingCategory";
 import Category from "./Category";
 
 export default function ChartView() {
-  const [data, setData] = useState({data: [{category: "טוען", sum: 0}]});
+  const [data, setData] = useState({
+    data: [
+      {category: "", sum: ""},
+      {category: "", sum: ""},
+      {category: "", sum: ""},
+      {category: "", sum: ""},
+      {category: "", sum: ""},
+      {category: "", sum: ""},
+      {category: "", sum: ""},
+      {category: "", sum: ""},
+      {category: "", sum: ""},
+      {category: "", sum: ""},
+    ],
+  });
   const [
     [month, setMonth],
     [year, setYear],
@@ -12,17 +26,38 @@ export default function ChartView() {
     [sheetId, setSheetId],
   ] = useContext(PullDataContext);
 
-  const getMonthData = async () => {
-    const data = await getMonth(sheetId, sheetName, month, year);
-    return data;
-  };
-
   useEffect(() => {
+    setData({
+      data: [
+        {category: "", sum: ""},
+        {category: "", sum: ""},
+        {category: "", sum: ""},
+        {category: "", sum: ""},
+        {category: "", sum: ""},
+        {category: "", sum: ""},
+        {category: "", sum: ""},
+        {category: "", sum: ""},
+        {category: "", sum: ""},
+        {category: "", sum: ""},
+      ],
+    });
+    const getMonthData = async () => {
+      const data = await getMonth(sheetId, sheetName, month, year);
+      return data;
+    };
     getMonthData().then((data) => setData(data));
-  }, [year, month]);
+  }, [year, month, sheetId, sheetName]);
 
   const categories = data.data.map((category, i) => {
-    return <Category key={i} sum={category.sum} category={category.category} />;
+    if (category.sum === "") {
+      return (
+        <LoadingCategory sum={category.sum} category={category.category} />
+      );
+    } else {
+      return (
+        <Category key={i} sum={category.sum} category={category.category} />
+      );
+    }
   });
 
   return (

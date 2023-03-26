@@ -10,6 +10,8 @@ export default function Month(props) {
     [sheetId, setSheetId],
   ] = useContext(PullDataContext);
 
+  console.log(props)
+
   const monthName =
     props.monthName[2] + props.monthName[3] + props.monthName[4];
 
