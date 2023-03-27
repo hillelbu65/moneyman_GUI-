@@ -1,4 +1,4 @@
-import {useGoogleLogin, hasGrantedAllScopesGoogle} from "@react-oauth/google";
+import {useGoogleLogin} from "@react-oauth/google";
 import React, {useContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Input from "../utils_components/Input";
@@ -23,11 +23,6 @@ export default function LoginCard() {
   const login = useGoogleLogin({
     scope: scope,
     onSuccess: (tokenResponse) => {
-      const hasAccess = hasGrantedAllScopesGoogle(
-        tokenResponse.access_token,
-        "google-scope-1",
-        "google-scope-2"
-      );
       sessionStorage.setItem("token", tokenResponse.access_token);
       navigate("/monthoverview");
       setPrompt({

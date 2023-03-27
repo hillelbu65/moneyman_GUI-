@@ -12,7 +12,6 @@ import {PromptProvider} from "./components/context/PromptContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const CLIENT_ID = process.env.REACT_APP_GCP_CLIENT_ID;
-const SCOPE = process.env.REACT_APP_GCP_SCOPE;
 root.render(
   <PromptProvider>
     <PullDataProvider>
