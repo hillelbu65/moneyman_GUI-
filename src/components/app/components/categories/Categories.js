@@ -144,9 +144,9 @@ export default function Categories() {
     getDataFromGoogle().catch(() =>
       setPrompt({
         type: "error",
-        text: "אנחנו לא מצליחים  למשוך את המידע שלך וודאי שכל הפרטים שלך נכונים והתחברי מחדש עם גוגל",
+        text: "אנחנו לא מצליחים למשוך את המידע שלכם. או שחסרים פרטים בהגדרות או שהם שגואים. כאשר אתם בטוחים שהמידע נכון התחברו מחדש עם גוגל",
         state: true,
-        time: 12000,
+        time: 15000,
       })
     );
   }, [month, year]);

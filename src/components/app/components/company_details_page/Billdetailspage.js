@@ -33,6 +33,7 @@ export default function Billdetailspage() {
   return (
     <div
       className=" 
+      z-20
       fixed 
       flex
       justify-center

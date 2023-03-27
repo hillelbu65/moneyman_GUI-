@@ -11,6 +11,7 @@ export default function PersonalSpacePage() {
   return (
     <div
       className=" 
+      z-20
     fixed 
     flex
     justify-center
