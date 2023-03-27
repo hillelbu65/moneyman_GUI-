@@ -8,7 +8,7 @@ export default function NavBarAndTools(props) {
   const [personalSpaceContext, setPersonalSpaceContext] =
     useContext(PersonalSpaceContext);
   return (
-    <div className="flex flex-row fixed right-3 top-3  sm:left-16 sm:top-16  w-fit h-fit">
+    <div className="z-10 flex flex-row fixed right-3 top-3  sm:left-16 sm:top-16  w-fit h-fit">
       <Dropdown data={props.data} />
       <div
         onClick={() => setPersonalSpaceContext(true)}

@@ -23,7 +23,7 @@ export default function CompanyCard(props) {
       >
         <div className=" col-start-1 col-end-1 flex flex-row justify-end">
           <div className=" flex self-end rounded-full w-14 h-14 bg-my_green justify-center items-center p-1">
-            <div className=" flex self-end rounded-full w-12 h-12 bg-slate-50 justify-center items-center p-2">
+            <div className=" flex self-end rounded-full w-12 h-12 bg-my_soft_cream justify-center items-center p-2">
               <img
                 className="w-full"
                 src={props.data.transactions[0].companyInfo.logoUrl}

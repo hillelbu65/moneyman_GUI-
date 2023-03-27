@@ -29,6 +29,108 @@ export default function Categories() {
   ] = useContext(PullDataContext);
 
   useEffect(() => {
+    setData([
+      {
+        category: "לא זוהה",
+        companies: [
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+        ],
+        sum: 0,
+      },
+      {
+        category: "העברות ומשיכות באשראי",
+        companies: [
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+        ],
+        sum: 0,
+      },
+      {
+        category: "קניות",
+        companies: [
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+        ],
+        sum: 0,
+      },
+      {
+        category: "מסעדות ואוכל בחוץ",
+        companies: [
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+        ],
+        sum: 0,
+      },
+      {
+        category: "סופרים ומכולות",
+        companies: [
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+        ],
+        sum: 0,
+      },
+      {
+        category: "תחבורה",
+        companies: [
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+        ],
+        sum: 0,
+      },
+      {
+        category: "שירותי אינטרנט",
+        companies: [
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+        ],
+        sum: 0,
+      },
+      {
+        category: "חשבונות משק הבית",
+        companies: [
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+        ],
+        sum: 0,
+      },
+      {
+        category: "מיסים",
+        companies: [
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+        ],
+        sum: 0,
+      },
+      {
+        category: "תרומות",
+        companies: [
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+          {sum: 0, transactions: [{companyInfo: {logoUrl: "", url: ""}}]},
+        ],
+        sum: 0,
+      },
+    ]);
     const getDataFromGoogle = async () => {
       const response = await getMonth(
         localStorage.getItem("sheet_id"),
@@ -37,6 +139,7 @@ export default function Categories() {
         year
       );
       setData(response.data);
+      console.log(response.data[0]);
     };
     getDataFromGoogle().catch(() =>
       setPrompt({

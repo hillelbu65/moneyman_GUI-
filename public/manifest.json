@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "moneyman",
+  "name": "פשוט לעקוב אחרי ההוצאות",
   "icons": [
     {
       "src": "favicon.ico",

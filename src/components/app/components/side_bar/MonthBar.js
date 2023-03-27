@@ -66,6 +66,7 @@ export default function MonthBar() {
   return (
     <div
       className="
+       z-10
       group 
       flex 
       fixed 
