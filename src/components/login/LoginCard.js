@@ -1,4 +1,4 @@
-import {useGoogleLogin} from "@react-oauth/google";
+import {useGoogleLogin, hasGrantedAllScopesGoogle} from "@react-oauth/google";
 import React, {useContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Input from "../utils_components/Input";
@@ -7,9 +7,9 @@ import {PullDataContext} from "../context/PullDataContext";
 import {PromptContext} from "../context/PromptContext";
 import LogoSVG from "./LogoSVG";
 
+const scope = process.env.REACT_APP_GCP_SCOPE;
 export default function LoginCard() {
   const [borderStyle, setBorderStyle] = useState("");
-
   const [
     [month, setMonth],
     [year, setYear],
@@ -21,7 +21,13 @@ export default function LoginCard() {
 
   const navigate = useNavigate();
   const login = useGoogleLogin({
+    scope: scope,
     onSuccess: (tokenResponse) => {
+      const hasAccess = hasGrantedAllScopesGoogle(
+        tokenResponse.access_token,
+        "google-scope-1",
+        "google-scope-2"
+      );
       sessionStorage.setItem("token", tokenResponse.access_token);
       navigate("/monthoverview");
       setPrompt({

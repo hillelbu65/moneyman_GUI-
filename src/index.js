@@ -19,7 +19,7 @@ root.render(
       <CompanyDetailsProvider>
         <PersonalSpaceProvider>
           <BrowserRouter>
-            <GoogleOAuthProvider clientId={CLIENT_ID} scope={SCOPE}>
+            <GoogleOAuthProvider clientId={CLIENT_ID}>
               <App />
             </GoogleOAuthProvider>
           </BrowserRouter>
