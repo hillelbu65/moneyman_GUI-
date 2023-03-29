@@ -31,7 +31,7 @@ export default function Prompt({type = "", text = ""}) {
   }, []);
 
   return (
-    <div className=" animate-comeUp delay-100 fixed bottom-28 flex flex-col justify-end items-center w-full h-fit p-3">
+    <div className=" animate-comeUp delay-100 fixed bottom-28 flex flex-col justify-end items-center w-full h-fit p-5">
       <div className={style.wrapper}>
         <div className={style.content}>
           <div className=" text-right">{text}</div>{" "}
