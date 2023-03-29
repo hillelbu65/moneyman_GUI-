@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "מנסה מה קרה",
+  "short_name": "Moneyman",
+  "name": "מעקב פשוט אחרי הוצאות",
   "icons": [
     {
       "src": "favicon.ico",

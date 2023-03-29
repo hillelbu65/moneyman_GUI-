@@ -9,6 +9,7 @@ import {PersonalSpaceProvider} from "./components/context/PersonalSpace";
 import {CompanyDetailsProvider} from "./components/context/CompanyDetailsContext";
 import {PullDataProvider} from "./components/context/PullDataContext";
 import {PromptProvider} from "./components/context/PromptContext";
+import {AppTypeProvider} from "./components/context/AppTypeContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const CLIENT_ID = process.env.REACT_APP_GCP_CLIENT_ID;
@@ -17,11 +18,13 @@ root.render(
     <PullDataProvider>
       <CompanyDetailsProvider>
         <PersonalSpaceProvider>
-          <BrowserRouter>
-            <GoogleOAuthProvider clientId={CLIENT_ID}>
-              <App />
-            </GoogleOAuthProvider>
-          </BrowserRouter>
+          <AppTypeProvider>
+            <BrowserRouter>
+              <GoogleOAuthProvider clientId={CLIENT_ID}>
+                <App />
+              </GoogleOAuthProvider>
+            </BrowserRouter>
+          </AppTypeProvider>
         </PersonalSpaceProvider>
       </CompanyDetailsProvider>
     </PullDataProvider>
