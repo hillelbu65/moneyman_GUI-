@@ -21,6 +21,7 @@ module.exports = {
         comeUp: "comeUp 0.1s ease-in",
         comeLeft: "comeLeft 0.1s ease-in",
         comeRight: "comeRight 0.1s ease-in",
+        soft: "soft 10s infinite",
       },
 
       keyframes: {
@@ -43,6 +44,10 @@ module.exports = {
           "100%": {
             transform: "translateY(0%)",
           },
+        },
+
+        soft: {
+          "100%": {transform: "rotate(360deg)"},
         },
 
         comeLeft: {

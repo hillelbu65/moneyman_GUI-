@@ -74,7 +74,9 @@ export default function LoginCard() {
       <div className="flex w-full h-full justify-center items-center p-2 rounded-md bg-my_soft_cream">
         <div className="grid grid-rows-3 justify-center sm:h-96 sm:w-96 w-11/12 h-96 rounded-md border-2 border-my_soft_black bg-my_soft_cream shadow-md ">
           <div className="flex flex-col items-center justify-center font-bold text-3xl h-full">
-            <LogoSVG />
+            <div className=" ml-2 mb-2">
+              <LogoSVG />
+            </div>
             <span>כניסה</span>
           </div>
           <div className="flex flex-col gap-3 w-full">

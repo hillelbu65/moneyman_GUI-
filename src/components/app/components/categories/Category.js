@@ -3,6 +3,7 @@ import CompanyCard from "./CompanyCard";
 import Svg from "./animation/Svg";
 import {BiChevronLeft, BiChevronRight} from "react-icons/bi";
 import LoadingCompanyCard from "./animation/LoadingCompanyCard";
+import Notfound from "./animation/Notfound";
 
 const sideScroll = (element, speed, distance, step) => {
   let scrollAmount = 0;
@@ -32,8 +33,9 @@ export default function Category(props) {
   const conditione = (category) => {
     if (category.length <= 0) {
       return (
-        <div>
-          <Svg />
+        <div className="w-full h-full">
+          {/* <Svg /> */}
+          <Notfound />
         </div>
       );
     } else if (category.length >= 1) {
@@ -53,7 +55,7 @@ export default function Category(props) {
     if (category.length <= 0) {
       setScrolling(false);
       setStyle(
-        "flex flex-col justify-center items-center  h-72 place-items-center rounded-lg "
+        "flex flex-col justify-center items-center w-full h-72 place-items-center"
       );
     } else {
       setScrolling(true);
