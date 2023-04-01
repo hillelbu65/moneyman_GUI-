@@ -7,7 +7,7 @@ export default function LogoutButton() {
 
   return (
     <div
-      onClick={() => navigate("/")}
+      onClick={() => navigate("/login")}
       className="flex items-center bg-my_soft_cream border-2 border-my_soft_black w-16 h-16 rounded-lg hover:bg-my_green font-medium hover:font-bold ml-2 justify-center
       transition ease-out
       hover:-translate-y-1

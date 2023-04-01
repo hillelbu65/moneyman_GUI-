@@ -29,7 +29,7 @@ export default function Balance() {
 
   return (
     <div className=" h-fit w-full col-start-2 col-end-8 mt-40 grid grid-cols-8">
-      <div className="h-20 w-full col-start-1 col-end-9 flex flex-col place-content-center text-my_pink font-bold text-3xl items-center">
+      <div className="h-20 w-full col-start-1 col-end-9 flex flex-col place-content-center text-my_soft_black font-bold text-3xl items-center">
         <div className="font-bold text-my_soft_black">הוצאתם החודש</div>
         <div className="flex flex-row justify-center items-center">
           <div className="mt-2">

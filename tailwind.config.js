@@ -22,6 +22,7 @@ module.exports = {
         comeLeft: "comeLeft 0.1s ease-in",
         comeRight: "comeRight 0.1s ease-in",
         soft: "soft 10s infinite",
+        pulse: "pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
 
       keyframes: {

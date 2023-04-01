@@ -8,6 +8,7 @@ import Billdetailspage from "./components/company_details_page/Billdetailspage";
 import PersonalSpacePage from "./components/personal_space/PersonalSpacePage";
 import MonthBar from "./components/side_bar/MonthBar";
 import NavBarAndTools from "./components/top_bar/NavBarAndTools";
+import {BiStar} from "react-icons/bi";
 
 export default function MonthOverviewPage() {
   const [personalSpaceContext, setPersonalSpaceContext] =
@@ -22,6 +23,12 @@ export default function MonthOverviewPage() {
     <div className="p-0 flex flex-col sm:p-10 sm:grid sm:grid-cols-8 gap-3">
       <NavBarAndTools />
       <Balance />
+      <div className="w-full mt-10 pr-5 text-my_soft_black font-bold text-2xl flex flex-row-reverse">
+        <span className=" text-my_pink">
+          <BiStar size={"40"} />{" "}
+        </span>
+        <span className="mt-1  text-my_pink"> טופ 10</span>
+      </div>
       <ChartView />
       <MonthBar />
       <Categories />

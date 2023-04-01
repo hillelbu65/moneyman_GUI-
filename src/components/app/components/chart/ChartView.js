@@ -48,20 +48,29 @@ export default function ChartView() {
     getMonthData().then((data) => setData(data));
   }, [year, month, sheetId, sheetName]);
 
-  const categories = data.data.map((category, i) => {
+  const sortedArray = data.data.sort(function (a, b) {
+    return a.sum - b.sum;
+  });
+
+  const categories = sortedArray.map((category, i) => {
     if (category.sum === "") {
       return (
         <LoadingCategory sum={category.sum} category={category.category} />
       );
     } else {
       return (
-        <Category key={i} sum={category.sum} category={category.category} />
+        <Category
+          key={i}
+          place={i + 1}
+          sum={category.sum}
+          category={category.category}
+        />
       );
     }
   });
 
   return (
-    <div className="grid grid-cols-2 grid-flow-row gap-4 w-full col-start-1 col-end-9 sm:col-start-2 sm:col-end-8  mt-10 rounded-lg text-black p-6">
+    <div className="flex flex-row-reverse overflow-x-auto overflow-y-clip gap-4 w-full h-72 col-start-1 col-end-9 sm:col-start-2 sm:col-end-8  text-black p-6 items-center">
       {categories}
     </div>
   );
