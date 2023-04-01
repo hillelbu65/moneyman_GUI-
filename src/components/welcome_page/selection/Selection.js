@@ -12,28 +12,28 @@ export default function Selection(props) {
   useEffect(() => {
     if (selected1) {
       setStyle1(
-        "flex flex-col justify-center items-center border-2 border-my_green text-my_green font-bold p-1  w-36 h-36 rounded-lg"
+        "flex flex-col justify-center items-center border-2 border-my_green text-my_green font-bold p-1  w-36 h-36 rounded-lg backdrop-blur-md"
       );
       setSelected2(false);
       setAppTypeContext("caspion");
       localStorage.setItem("apptype", "caspion");
     } else {
       setStyle1(
-        "flex flex-col justify-center items-center border-2 border-my_soft_black text-my_soft_black p-1  w-36 h-36 rounded-lg"
+        "flex flex-col justify-center items-center border-2 border-my_soft_black text-my_soft_black p-1  w-36 h-36 rounded-lg backdrop-blur-sm"
       );
     }
   }, [selected1]);
   useEffect(() => {
     if (selected2) {
       setStyle2(
-        "flex flex-col justify-center items-center border-2 border-my_green text-my_green font-bold p-1  w-36 h-36 rounded-lg"
+        "flex flex-col justify-center items-center border-2 border-my_green text-my_green font-bold p-1  w-36 h-36 rounded-lg backdrop-blur-sm"
       );
       setSelected1(false);
-      setAppTypeContext("maneyman");
-      localStorage.setItem("apptype", "maneyman");
+      setAppTypeContext("moneyman");
+      localStorage.setItem("apptype", "moneyman");
     } else {
       setStyle2(
-        "flex flex-col justify-center items-center border-2 border-my_soft_black text-my_soft_black p-1 w-36 h-36 rounded-lg"
+        "flex flex-col justify-center items-center border-2 border-my_soft_black text-my_soft_black p-1 w-36 h-36 rounded-lg backdrop-blur-sm"
       );
     }
   }, [selected2]);

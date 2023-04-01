@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {PullDataContext} from "../../context/PullDataContext";
 import {calculateTheSumOfTheMonth} from "../../data_management/CalculationUtils";
-import {getMonth} from "../../data_management/pullData";
+import {getMonth} from "../../data_management/PullDataMoneyman";
 import {BiShekel} from "react-icons/bi";
 
 export default function Balance() {

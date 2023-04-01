@@ -139,7 +139,6 @@ export default function Categories() {
         year
       );
       setData(response.data);
-      console.log(response.data[0]);
     };
     getDataFromGoogle().catch(() =>
       setPrompt({

@@ -15,7 +15,7 @@ export default function WelcomePage() {
     });
   }, []);
   return (
-    <div className=" fixed flex flex-col w-screen h-screen z-10 bg-none">
+    <div className=" fixed flex flex-col w-screen h-screen z-10 bg-none backdrop-blur-sm">
       <TopBar />
       <Hero />
       <SelectionsPage />

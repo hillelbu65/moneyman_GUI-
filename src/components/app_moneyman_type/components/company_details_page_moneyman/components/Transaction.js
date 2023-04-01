@@ -28,7 +28,7 @@ export default function Transaction(props) {
         "flex min-h-8 bg-my_pink rounded-md items-center justify-center font-bold text-my_soft_cream"
       );
     }
-  }, []);
+  });
 
   return (
     <div className={borderStyle}>

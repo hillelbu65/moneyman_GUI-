@@ -39,18 +39,20 @@ const findMyCompanyInfo = (nameOfCompany) => {
 const makeObjs = (array_Of_Arrays) => {
   const result = array_Of_Arrays.map((array) => {
     return {
-      category: findMyCompanyInfo(array[2]).category,
+      category: array[12],
+      subCategory: array[13],
       companyName:
-        findMyCompanyInfo(array[2]).name === "NotHere"
-          ? array[2]
-          : findMyCompanyInfo(array[2]).name,
-      amount: array[1],
+        findMyCompanyInfo(array[3]).name === "NotHere"
+          ? array[3]
+          : findMyCompanyInfo(array[3]).name,
+      amount: array[2],
       date: array[0],
+      originalDate: array[1],
       month: array[0][3] + array[0][4],
       year: array[0][6] + array[0][7] + array[0][8] + array[0][9],
-      card: array[5].toString(),
-      moreInfo: array[3],
-      companyInfo: findMyCompanyInfo(array[2]),
+      card: array[6].toString(),
+      moreInfo: array[4],
+      companyInfo: findMyCompanyInfo(array[3]),
     };
   });
 
@@ -68,7 +70,8 @@ const generateArrayOfSubCompaniesSummationData = (array) => {
       result.length === 0
     ) {
       result.push({
-        category: findMyCompanyInfo(temp[0].companyName).category,
+        category: temp[0].category,
+        subCategory: temp[0].subCategory,
         transactions: [...temp],
         name: temp[0].companyName,
         companyInfo: findMyCompanyInfo(temp[0].companyName),
@@ -79,6 +82,29 @@ const generateArrayOfSubCompaniesSummationData = (array) => {
   return result;
 }; //This function returns an array. Each element in the array is an object,
 //which contains the name of the sub-category, and the total amount of transactions of that sub-category.
+
+const generateArrayOfSubCategorySummationData = (array) => {
+  let result = [];
+  array.forEach((transaction, index) => {
+    const temp = array.filter(
+      (obj) => obj.companyName === transaction.companyName
+    );
+    if (
+      result.find((el) => el.name === temp[0].subCategory) === undefined ||
+      result.length === 0
+    ) {
+      result.push({
+        category: temp[0].category,
+        subCategory: temp[0].subCategory,
+        companies: [...temp],
+        name: temp[0].companyName,
+        companyInfo: findMyCompanyInfo(temp[0].companyName),
+        sum: calculateTheSumOfTheCategory(temp),
+      });
+    }
+  });
+  return result;
+};
 
 const sortToCategories = (array) => {
   let sortedArray = [];
@@ -93,6 +119,7 @@ const sortToCategories = (array) => {
     ) {
       sortedArray.push({
         category: tempSorted[0].category,
+        subCategoriesData: sortToSubCategories(tempSorted),
         transactions: [...tempSorted],
         companies: generateArrayOfSubCompaniesSummationData(tempSorted),
         sum: calculateTheSumOfTheCategory(tempSorted),
@@ -114,6 +141,34 @@ const sortToCategories = (array) => {
 // - The total amount of transactions of the same category,
 // - The month in which all the withdrawals made from the database were made
 // - The year in which all withdrawals made from the database were made
+
+const sortToSubCategories = (array) => {
+  let sortedArray = [];
+  array.forEach((transaction, index) => {
+    const tempSorted = array.filter(
+      (el) => el.subCategory === transaction.subCategory
+    );
+    if (
+      sortedArray.find((obj) => obj.category === tempSorted[0].subCategory) ===
+        undefined ||
+      sortedArray.length === 0
+    ) {
+      sortedArray.push({
+        category: tempSorted[0].subCategory,
+        transactions: [...tempSorted],
+        companies: generateArrayOfSubCompaniesSummationData(tempSorted),
+        sum: calculateTheSumOfTheCategory(tempSorted),
+        month: tempSorted[0].date[3] + tempSorted[0].date[4],
+        year:
+          tempSorted[0].date[6] +
+          tempSorted[0].date[7] +
+          tempSorted[0].date[8] +
+          tempSorted[0].date[9],
+      });
+    }
+  });
+  return sortedArray;
+};
 
 const sortDuplicatesAndUnvalidDates = (arrayOfDates) => {
   const result = [];
@@ -179,6 +234,7 @@ export const getYearBillData = async (
   year
 ) => {
   const response = await pullFileData(file_id, sheet_name);
+
   const Year = response.filter((row) => {
     if (row[0][6] + row[0][7] + row[0][8] + row[0][9] === year) {
       return row;

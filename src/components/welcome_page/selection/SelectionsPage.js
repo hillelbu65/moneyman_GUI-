@@ -12,7 +12,7 @@ export default function SelectionsPage() {
         <div> ? באיזו פלטפומה אתם משתמשים</div>
         <div className="flex flex-col justify-center items-center w-full h-full">
           <div className="flex flex-row gap-3">
-            <Selection name1={"כספיון"} name2={"maneyman"} />
+            <Selection name1={"כספיון"} name2={"moneyman"} />
           </div>
         </div>
       </div>

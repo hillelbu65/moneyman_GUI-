@@ -3,19 +3,46 @@ import React, {useContext, useEffect, useState} from "react";
 import {MdOutlineClear} from "react-icons/md";
 import {MdKeyboardArrowRight} from "react-icons/md";
 import {BiShekel} from "react-icons/bi";
-import {CompanyDetailsContext} from "../../../context/CompanyDetailsContext";
 import {PullDataContext} from "../../../context/PullDataContext";
 import BillView from "./components/BillView";
 import InfoCard from "./components/InfoCard";
+import {CompanyDetailsMoneyman} from "../../../context/CompanyDetailsMoneyman";
+import {getYearBillData} from "../../../data_management/PullDataMoneyman";
 
-export default function Billdetailspage() {
+export default function CompanyDetailsPage() {
   const [url, setUrl] = useState("");
   const [logoUrl, setLogoUrl] = useState("");
+
+  const [yearData, setYearData] = useState({
+    data: [
+      {
+        category: "",
+        month: "03",
+        companyName: "",
+        sum: 0,
+        companyInfo: {logoUrl: "", url: ""},
+        transactions: [
+          {
+            category: "",
+            month: "03",
+            companyName: "",
+            amount: "-3",
+            card: "0000",
+            moreInfo: "",
+            date: "00/00/00",
+            companyInfo: {logoUrl: "", url: ""},
+          },
+        ],
+      },
+    ],
+    sum: 0,
+    transactionsSum: "0",
+  });
   const [
     [companyDetailsOn, setCompanyDetailsOn],
     [company, setCompany],
     [companyYearData, setCompanyYearData],
-  ] = useContext(CompanyDetailsContext);
+  ] = useContext(CompanyDetailsMoneyman);
 
   const [
     [month, setMonth],
@@ -23,11 +50,38 @@ export default function Billdetailspage() {
     [sheetName, setSheetName],
     [sheetId, setSheetId],
   ] = useContext(PullDataContext);
-
   useEffect(() => {
     setUrl(companyYearData.data[0].transactions[0].companyInfo.url);
     setLogoUrl(companyYearData.data[0].transactions[0].companyInfo.logoUrl);
   }, [companyYearData]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await getYearBillData(
+        localStorage.getItem("sheet_id"),
+        localStorage.getItem("sheet_name"),
+        company,
+        year
+      );
+      setCompanyYearData(response);
+      return response;
+    };
+    getData().then((data) => setYearData(data));
+  }, []);
+
+  const sum = () => {
+    const sum = companyYearData.sum.toString().slice(1);
+    if (sum === "") {
+      return "0";
+    } else {
+      return sum;
+    }
+  };
+
+  const average = () => {
+    const average = sum() / yearData.transactionsSum;
+    return average;
+  };
 
   return (
     <div
@@ -59,12 +113,16 @@ export default function Billdetailspage() {
          sm:border-my_soft_black
         justify-self-center 
         shadow-2xl 
-        animate-comeUp"
+        animate-comeLeft"
       >
         <div className="flex flex-row w-full h-fit justify-end gap-2 p-4">
           <div className="flex flex-row justify-end items-center  text-md sm:text-xl font-bold text-my_soft_black">
             {" "}
             <div className=" text-my_green">{company}</div>
+            <span className=" text-my_green mt-1 rotate-180">
+              <MdKeyboardArrowRight />
+            </span>{" "}
+            {companyYearData.data[0].transactions[0].subCategory}
             <span className=" text-my_green mt-1 rotate-180">
               <MdKeyboardArrowRight />
             </span>{" "}
@@ -92,7 +150,7 @@ export default function Billdetailspage() {
                   <div className="flex flex-col col-start-1 col-end-1 text-sm">
                     <span className="flex w-full justify-center items-center">
                       <BiShekel />
-                      {companyYearData.sum.toString().slice(1)}
+                      {sum()}
                     </span>
                     <span>סה"כ השנה</span>
                   </div>
@@ -101,8 +159,11 @@ export default function Billdetailspage() {
                     <span>עסקאות</span>
                   </div>
                   <div className="flex flex-col col-start-3 col-end-3 text-sm">
-                    <span>0</span>
-                    <span>פעילות</span>
+                    <span className="flex w-full justify-center items-center">
+                      <BiShekel />
+                      {average()}
+                    </span>
+                    <span>עסקה ממוצעת</span>
                   </div>
                 </div>
               </div>
@@ -116,12 +177,16 @@ export default function Billdetailspage() {
               </div>
             </div>
             <div className="flex justify-end mt-2 h-fit p-2 ">
-              <InfoCard title={"אתר אינטרנט"} url={url} />
+              {url !== "NotHere" || "" ? (
+                <InfoCard title={"אתר אינטרנט"} url={url} />
+              ) : (
+                ""
+              )}
             </div>
           </div>
 
           <div className="flex w-full sm:w-4/5">
-            <BillView companyName={company} />
+            <BillView data={yearData} />
           </div>
         </div>
       </div>

@@ -10,25 +10,31 @@ import {CompanyDetailsProvider} from "./components/context/CompanyDetailsContext
 import {PullDataProvider} from "./components/context/PullDataContext";
 import {PromptProvider} from "./components/context/PromptContext";
 import {AppTypeProvider} from "./components/context/AppTypeContext";
+import {SubCategoryDetailsProvider} from "./components/context/SubCategoryDetailsContext";
+import {CompanyDetailsMoneymanProvider} from "./components/context/CompanyDetailsMoneyman";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const CLIENT_ID = process.env.REACT_APP_GCP_CLIENT_ID;
 root.render(
-  <PromptProvider>
-    <PullDataProvider>
-      <CompanyDetailsProvider>
-        <PersonalSpaceProvider>
-          <AppTypeProvider>
-            <BrowserRouter>
-              <GoogleOAuthProvider clientId={CLIENT_ID}>
-                <App />
-              </GoogleOAuthProvider>
-            </BrowserRouter>
-          </AppTypeProvider>
-        </PersonalSpaceProvider>
-      </CompanyDetailsProvider>
-    </PullDataProvider>
-  </PromptProvider>
+  <CompanyDetailsMoneymanProvider>
+    <PromptProvider>
+      <PullDataProvider>
+        <CompanyDetailsProvider>
+          <PersonalSpaceProvider>
+            <SubCategoryDetailsProvider>
+              <AppTypeProvider>
+                <BrowserRouter>
+                  <GoogleOAuthProvider clientId={CLIENT_ID}>
+                    <App />
+                  </GoogleOAuthProvider>
+                </BrowserRouter>
+              </AppTypeProvider>
+            </SubCategoryDetailsProvider>
+          </PersonalSpaceProvider>
+        </CompanyDetailsProvider>
+      </PullDataProvider>
+    </PromptProvider>
+  </CompanyDetailsMoneymanProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

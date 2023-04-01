@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="flex flex-row gap-2 w-full h-fit justify-center">
         <div className="animate-comeLeft text-blue-900">כספיון</div>
         <div className="animate-comeLeft">ו</div>
-        <div className="animate-comeLeft text-my_green">maneyman</div>
+        <div className="animate-comeLeft text-my_green">moneyman</div>
       </div>
     </div>
   );

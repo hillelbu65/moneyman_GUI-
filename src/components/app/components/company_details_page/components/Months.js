@@ -29,8 +29,6 @@ export default function Months() {
         year
       );
       setCompanyYearData(response);
-      console.log("Months");
-      console.log(response);
       return response;
     };
     getData().then((data) => setYearData(data));

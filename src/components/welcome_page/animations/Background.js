@@ -63,7 +63,7 @@ export default function Background() {
       <motion.div
         className="flex h-10 w-20 rounded-md justify-center items-center text-my_soft_cream"
         initial={{x: "-100vw", backgroundColor: "#F6E8EA"}}
-        animate={{x: "110vw", backgroundColor: "#46C36C"}}
+        animate={{x: "110vw", backgroundColor: "#F45B69"}}
         transition={{duration: 20, delay: 0, repeat: Infinity}}
       >
         <div className="mt-0.5">

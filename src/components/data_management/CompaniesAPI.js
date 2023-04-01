@@ -39,7 +39,7 @@ export const companiesApi = () => {
         "https://casadobrasil.co.il/wp-content/uploads/2020/02/logo-png.png",
     },
     {
-      names: [`ביתמרקט`],
+      names: [`ביתןמרקט`],
       name: `ינות  ביתן`,
       category: "סופרים ומכולות",
       url: "https://www.ybitan.co.il/",
@@ -132,7 +132,7 @@ export const companiesApi = () => {
         "https://upload.wikimedia.org/wikipedia/he/thumb/6/67/BTL-Logo_Old.svg/1024px-BTL-Logo_Old.svg.png",
     },
     {
-      names: ["פלאנט"],
+      names: ["יספלאנט"],
       name: "יס פלאנט",
       category: "קניות",
       url: "https://www.planetcinema.co.il/#/",
@@ -167,7 +167,7 @@ export const companiesApi = () => {
       names: ["שופרסל"],
       name: "שופרסל",
       category: "סופרים ומכולות",
-      url: "https://yochananof.co.il/",
+      url: "https://www.shufersal.co.il/online/he/G14",
       logoUrl:
         "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA4klEQVR4Ae3VIQiDUBSFYctLlrG0Zl7Pso49mO0d7MUOVtM6WO3Bbl2xmFZsL21H+IMYpuDEcg98wfDeuTc8DCwWi8VyerrLI5q5yVXcwZ0O4fTR4yWdtNJIJbkkDOe2XMwCd4k5m3FPIaU8paajmQ59VniGq7jUzQspSymoWWKQUfza/Qyw2ZuimyRs0288u38AeLYc9xSDAc7CADZAgeUzaaUXv6PAyyjD8pmjXnvPkSQM1/4YZqSgYYlcUs7eEXFnCDcJtobDmXSz7VrKYgrC4OiwTcmGKjwh//xXWCwWyxdUlUFRhHarcQAAAABJRU5ErkJggg==",
     },

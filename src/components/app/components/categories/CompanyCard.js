@@ -18,7 +18,6 @@ export default function CompanyCard(props) {
         onClick={() => {
           setCompanyDetailsOn(true);
           setCompany(props.data.transactions[0].companyName);
-          console.log(props.data.transactions[0].companyName);
         }}
       >
         <div className=" col-start-1 col-end-1 flex flex-row justify-end">

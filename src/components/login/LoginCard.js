@@ -24,7 +24,12 @@ export default function LoginCard() {
     scope: scope,
     onSuccess: (tokenResponse) => {
       sessionStorage.setItem("token", tokenResponse.access_token);
-      navigate("/monthoverview");
+      if (localStorage.getItem("apptype") === "moneyman") {
+        navigate("/monthoverview_moneyman");
+      } else if (localStorage.getItem("apptype") === "caspion") {
+        navigate("/monthoverview");
+      }
+
       setPrompt({
         type: "",
         text: "",
