@@ -23,12 +23,6 @@ export default function MonthOverviewPage() {
     <div className="p-0 flex flex-col sm:p-10 sm:grid sm:grid-cols-8 gap-3">
       <NavBarAndTools />
       <Balance />
-      <div className="w-full mt-10 pr-5 text-my_soft_black font-bold text-2xl flex flex-row-reverse">
-        <span className=" text-my_pink">
-          <BiStar size={"40"} />{" "}
-        </span>
-        <span className="mt-1  text-my_pink"> טופ 10</span>
-      </div>
       <ChartView />
       <MonthBar />
       <Categories />
