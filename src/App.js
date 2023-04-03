@@ -7,14 +7,6 @@ import {useNavigate} from "react-router-dom";
 
 function App() {
   const [prompt, setPrompt] = useContext(PromptContext);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(localStorage.getItem("apptype"));
-    if (localStorage.getItem("apptype") !== null) {
-      navigate("/login");
-    }
-  }, []);
   return (
     <div className="App">
       <Main />
