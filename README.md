@@ -9,8 +9,8 @@ Simple graphical user interface for expenses monitoring.
   1. Go to moneymangui.com
   2. select the type of your data provaidor (moneyman or caspion).
 3. go to your google worksheet (from a your browser only).
-  1. Copy the worksheet id from the url and paste it In the login page.
-  2. Copy the sheet name and paste it In the login page.
+  3.1. Copy the worksheet id from the url and paste it In the login page.
+  3.2. Copy the sheet name and paste it In the login page.
   
  
 ### localy 
