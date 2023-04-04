@@ -8,7 +8,7 @@ Simple graphical user interface for expenses monitoring.
 
 ## for whom?
 
-made for israeli people that have financial data on spreadsheet, and they want to automatically sort it and and better identify on what and where they spend their money.
+Made for israeli people that have financial data on spreadsheet, and they want to automatically sort it and and better identify on what and where they spend their money.
 
 ## Why?
 
