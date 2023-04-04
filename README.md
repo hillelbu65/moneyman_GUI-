@@ -1,4 +1,4 @@
-![logo]{C:\Users\hille\Desktop\moneyman\logo512.png}
+![logo](C:\Users\hille\Desktop\moneyman\logo512.png)
 
 # moneymanGUI
 
