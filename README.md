@@ -12,11 +12,11 @@ Made for israeli people that have financial data on spreadsheet, and they want t
 
 ## Why?
 
-###### 1. Organizes all expenses for you automatically, into 10 categories that will give you control. without giving you a headache.
+1. Organizes all expenses for you automatically, into 10 categories that will give you control. without giving you a headache.
 
-###### 2. Adaptive interface suitable for any screen. Track spending from any device.
+2. Adaptive interface suitable for any screen. Track spending from any device.
 
-###### 3. Contains a database of business information, which helps us identify the business where each transaction was purchased. With its help we find the logo, its official website and other details (WIP)
+3. Contains a database of business information, which helps us identify the business where each transaction was purchased. With its help we find the logo, its official website and other details (WIP)
 
 ## Getting Started
 
