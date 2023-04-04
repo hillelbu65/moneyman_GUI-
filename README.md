@@ -1,4 +1,4 @@
-![LOGO](logo512.png)
+![LOGO](logo192.png)
 
 # moneymanGUI
 
