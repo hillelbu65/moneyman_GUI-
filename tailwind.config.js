@@ -16,6 +16,7 @@ module.exports = {
         my_soft_black: "#22181C",
         my_soft_cream: "#F6E8EA",
         my_pink: "#F45B69",
+        my_blue: "#266DD3",
       },
       animation: {
         comeUp: "comeUp 0.1s ease-in",

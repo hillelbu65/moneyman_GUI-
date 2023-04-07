@@ -54,12 +54,13 @@ export default function Billdetailspage() {
         sm:w-3/4 
         sm:h-5/6 
         sm:rounded-lg 
-         bg-my_soft_cream
+         bg-my_soft_cream/70
          sm:border-2
          sm:border-my_soft_black
         justify-self-center 
         shadow-2xl 
-        animate-comeUp"
+        animate-comeUp
+         backdrop-blur-lg"
       >
         <div className="flex flex-row w-full h-fit justify-end gap-2 p-4">
           <div className="flex flex-row justify-end items-center  text-md sm:text-xl font-bold text-my_soft_black">

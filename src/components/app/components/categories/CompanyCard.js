@@ -12,9 +12,9 @@ export default function CompanyCard(props) {
   const sum = props.data.sum.toString().slice(1);
 
   return (
-    <div className="group duration-100 bg-opacity-90">
+    <div className="group duration-100 bg-opacity-90 h-fit W-fit">
       <div
-        className=" grid grid-cols-4 w-72 max-h-20 min-h-20 p-2 justify-center items-center rounded-lg text-my_soft_black border-my_soft_black border-2 ml-4 mr-4 group-hover:bg-opacity-80 font-medium shadow-lg"
+        className=" grid grid-cols-4 w-72 max-h-20 min-h-20 p-2 justify-center items-center rounded-lg text-my_soft_black border-my_soft_black ml-4 mr-4 group-hover:bg-opacity-80 font-medium shadow-lg bg-gradient-to-l from-my_green/50 via-my_green/75 to-my_green backdrop-blur-sm"
         onClick={() => {
           setCompanyDetailsOn(true);
           setCompany(props.data.transactions[0].companyName);
